@@ -110,6 +110,7 @@ typedef struct HDGeometry {
 #define BDRV_OPT_READ_ONLY      "read-only"
 #define BDRV_OPT_DISCARD        "discard"
 #define BDRV_OPT_FORCE_SHARE    "force-share"
+#define BDRV_OPT_SHARED         "shared"
 
 
 #define BDRV_SECTOR_BITS   9

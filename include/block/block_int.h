@@ -672,6 +672,9 @@ struct BlockDriverState {
 
     /* Only read/written by whoever has set active_flush_req to true.  */
     unsigned int flushed_gen;             /* Flushed write generation */
+
+    /* Shared devices are not migrated. */
+    bool shared;
 };
 
 struct BlockBackendRootState {

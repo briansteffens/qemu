@@ -402,6 +402,10 @@ static int init_blk_migration(QEMUFile *f)
     bmds_bs = g_malloc0(num_bs * sizeof(*bmds_bs));
 
     for (i = 0, bs = bdrv_first(&it); bs; bs = bdrv_next(&it), i++) {
+        if (bs->shared) {
+            continue;
+        }
+
         if (bdrv_is_read_only(bs)) {
             continue;
         }

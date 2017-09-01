@@ -2466,6 +2466,13 @@ static BlockDriverState *bdrv_open_inherit(const char *filename,
         bdrv_backing_options(&flags, options, flags, options);
     }
 
+    /* Check for shared flag */
+    /* See cautionary note on accessing @options above */
+    bs->shared =
+        g_strcmp0(qdict_get_try_str(options, BDRV_OPT_SHARED), "on") == 0 ||
+        qdict_get_try_bool(options, BDRV_OPT_SHARED, false);
+    qdict_del(options, BDRV_OPT_SHARED);
+
     bs->open_flags = flags;
     bs->options = options;
     options = qdict_clone_shallow(options);

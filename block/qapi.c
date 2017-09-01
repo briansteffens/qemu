@@ -66,6 +66,8 @@ BlockDeviceInfo *bdrv_block_device_info(BlockBackend *blk,
 
     info->detect_zeroes = bs->detect_zeroes;
 
+    info->shared = bs->shared;
+
     if (blk && blk_get_public(blk)->throttle_state) {
         ThrottleConfig cfg;
 
